@@ -1018,10 +1018,15 @@ class graph {
       $this->calculated['y_axis_right']['min'] = $minRight;
       $this->calculated['y_axis_right']['max'] = $maxRight;
 
+      $this->parameter['y_axis_gridlines'] = $this->parameter['y_axis_gridlines'] == 1 ? 2: $this->parameter['y_axis_gridlines'];
+
       $stepLeft = ($maxLeft - $minLeft) / ($this->parameter['y_axis_gridlines'] - 1);
       $startLeft = $minLeft;
       $step_right = ($maxRight - $minRight) / ($this->parameter['y_axis_gridlines'] - 1);
       $start_right = $minRight;
+
+      $stepLeft = $stepLeft == 0 ? 1: $stepLeft;
+      $step_right = $step_right == 0 ? 1: $step_right;
 
       if ($this->parameter['y_axis_text_left']) {
         for ($i = 0; $i < $this->parameter['y_axis_gridlines']; $i++) { // calculate y axis text sizes
